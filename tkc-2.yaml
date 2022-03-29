@@ -1,0 +1,17 @@
+apiVersion: run.tanzu.vmware.com/v1alpha1      #TKGS API endpoint
+kind: TanzuKubernetesCluster                   #required parameter
+metadata:
+  name: tkc-2                         #cluster name, user defined
+  namespace: tkg                  #vsphere namespace
+spec:
+  distribution:
+    version: v1.21                        
+  topology:
+    controlPlane:
+      count: 1                                 #number of control plane nodes
+      class: best-effort-medium                #vmclass for control plane nodes
+      storageClass: k8s-policy         #storageclass for control plane
+    workers:
+      count: 2                                 #number of worker nodes
+      class: best-effort-medium                #vmclass for worker nodes
+      storageClass: k8s-policy 
